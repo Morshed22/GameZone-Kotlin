@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "825634543420",
+    "firebase_url": "https://gamezone-10960.firebaseio.com",
+    "project_id": "gamezone-10960",
+    "storage_bucket": "gamezone-10960.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825634543420:android:46d7d3fa23fa331f",
+        "android_client_info": {
+          "package_name": "com.morshedalam.gamezone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825634543420-2isnbmudkdhu62qkg15kv20e1tt0nj2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.morshedalam.gamezone",
+            "certificate_hash": "1d4a5eca04b0c9a312bdd60dbb0aab5b2c47e055"
+          }
+        },
+        {
+          "client_id": "825634543420-4851vdunfgi4jom8vb5v39vtf6lnu5u0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfPj2mYlAJtQfl_jSgybl_TqBnTZ-tDTI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825634543420-4851vdunfgi4jom8vb5v39vtf6lnu5u0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
