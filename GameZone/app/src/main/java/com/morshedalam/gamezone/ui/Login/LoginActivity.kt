@@ -18,7 +18,7 @@ import com.google.firebase.auth.*
 import com.morshedalam.gamezone.R
 import com.morshedalam.gamezone.model.User
 import com.morshedalam.gamezone.repository.RemoteRepository
-import kotlinx.android.synthetic.main.activity_login.*
+import com.morshedalam.gamezone.ui.BottomTabViews.BottomTabActivity
 import java.util.*
 
 class LoginActivity : AppCompatActivity(),LoginContract.View, GoogleApiClient.OnConnectionFailedListener {
@@ -91,9 +91,8 @@ class LoginActivity : AppCompatActivity(),LoginContract.View, GoogleApiClient.On
     }
 
     override fun showUser(user: User) {
-        text_id.visibility = View.VISIBLE
-        text_id.text = user.userData.userName
-        Log.d(TAG, user.msg)
+        val intent = Intent(this, BottomTabActivity::class.java)
+        startActivity(intent)
     }
 
     override fun showErrorRetrievingUser() {

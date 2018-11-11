@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.morshedalam.gamezone.model.User
 import com.morshedalam.gamezone.model.UserRequest
 import com.morshedalam.gamezone.repository.Repository
+import com.morshedalam.gamezone.repository.UserSharePrefsRepository
 import com.morshedalam.gamezone.ui.Login.LoginContract
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +42,7 @@ class LoginPresenter(val repository: Repository, val view: LoginContract.View): 
                     val user = response?.body()
 
                     if (user != null) {
+                        UserSharePrefsRepository.save(user.userData)
                         view.showUser(user)
                     } else {
                         view.showErrorRetrievingUser()
