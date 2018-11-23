@@ -12,29 +12,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3"/>
+        app:layout_constraintGuide_percent="0.3" />
 
     <android.support.v7.widget.CardView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardCornerRadius="8dp"
         android:layout_margin="@dimen/padding_half"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_center">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.glide.slider.library.SliderLayout
             android:id="@+id/slider"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </android.support.v7.widget.CardView>
 
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/categoyCardView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:cardCornerRadius="4dp"
+        android:layout_margin="@dimen/padding_half"
+        android:background="@drawable/gradient_horizontal_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_center">
+
+        <RelativeLayout
+            android:id="@+id/cantainerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/gradient_horizontal_view">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:contentDescription="@string/game_icon_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/coin_small_icon"
+                android:layout_marginLeft="@dimen/padding_half"
+                android:layout_marginStart="@dimen/padding_half"
+                 />
 
 
 
 
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
