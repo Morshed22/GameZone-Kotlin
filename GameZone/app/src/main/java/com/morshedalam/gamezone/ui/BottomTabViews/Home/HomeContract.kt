@@ -8,6 +8,8 @@ interface HomeContract {
 
     interface View : BaseView<Presenter> {
         fun showHomesData(items: List<Game.Data>)
+        fun progressBarVisible()
+        fun progressBarGone()
     }
 
     interface Presenter : BasePresenter {

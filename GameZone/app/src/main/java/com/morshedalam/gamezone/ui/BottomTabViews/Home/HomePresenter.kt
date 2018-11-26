@@ -17,11 +17,12 @@ class HomePresenter(val repository: RemoteRepository,val view:HomeContract.View)
 
        val userdata = UserSharePrefsRepository.getUserData()
         userdata?.let { userdata ->
-
+            view.progressBarVisible()
             repository.retrieveAllGamesItems(userdata.userId, object :Callback<Game>{
 
 
                 override fun onResponse(call: Call<Game>?, response: Response<Game>?) {
+                    view.progressBarGone()
                     val games = response?.body()
                     if (games != null){
 //                        Log.d(TAG,"${games.data}" )
@@ -32,10 +33,9 @@ class HomePresenter(val repository: RemoteRepository,val view:HomeContract.View)
                 }
 
                 override fun onFailure(call: Call<Game>?, t: Throwable?) {
+                    view.progressBarGone()
                     Log.e(TAG, "error games items retrieving")
                 }
-
-
 
             })
 

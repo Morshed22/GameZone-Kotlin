@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.morshedalam.gamezone.R
 import com.morshedalam.gamezone.ui.BottomTabViews.Home.HomeFragment
 import com.morshedalam.gamezone.ui.BottomTabViews.Profile.ProfileFragment
@@ -39,6 +40,10 @@ class BottomTabActivity : AppCompatActivity() {
     private  fun switchFragment(fragment:Fragment){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.main_container, fragment).commit()
+    }
+
+    fun onClickSignInButton(view: View){
+
     }
 }
 

@@ -2,19 +2,16 @@ package com.morshedalam.gamezone.ui.BottomTabViews.Home
 
 import android.content.Context
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.request.RequestOptions
-import com.glide.slider.library.Animations.DescriptionAnimation
 import com.glide.slider.library.Indicators.PagerIndicator
-import com.glide.slider.library.SliderLayout
 import com.glide.slider.library.SliderTypes.BaseSliderView
 import com.glide.slider.library.SliderTypes.DefaultSliderView
-import com.glide.slider.library.SliderTypes.TextSliderView
 import com.glide.slider.library.Tricks.ViewPagerEx
 
 import com.morshedalam.gamezone.R
@@ -26,14 +23,16 @@ import kotlinx.android.synthetic.main.fragment_home.*
 class HomeFragment : Fragment(), HomeContract.View, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
 
+
     override lateinit var presenter: HomeContract.Presenter
+    private lateinit var adapter: GameItemAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         presenter = HomePresenter(RemoteRepository(), this)
-        presenter.start()
+        //presenter.start()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -43,10 +42,32 @@ class HomeFragment : Fragment(), HomeContract.View, BaseSliderView.OnSliderClick
     }
 
 
-    override fun showHomesData(items: List<Game.Data>) {
-        setImageSlideShow(items)
+    override fun onStart() {
+        super.onStart()
+        presenter.start()
     }
 
+
+
+    override fun showHomesData(items: List<Game.Data>) {
+        setImageSlideShow(items)
+        setUpRecyclerView(items)
+    }
+
+    private fun setUpRecyclerView(gameitems: List<Game.Data>){
+        adapter = GameItemAdapter(gameitems)
+        itemRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        itemRecyclerView.adapter = adapter
+
+    }
+
+    override fun progressBarVisible() {
+        progressBarLoader.visibility = View.VISIBLE
+    }
+
+    override fun progressBarGone() {
+        progressBarLoader.visibility = View.GONE
+    }
     private fun setImageSlideShow(gameitem: List<Game.Data>) {
         val requestOption = RequestOptions()
 
@@ -68,14 +89,10 @@ class HomeFragment : Fragment(), HomeContract.View, BaseSliderView.OnSliderClick
         }
         slider.indicatorVisibility = PagerIndicator.IndicatorVisibility.Invisible
 
-
-//        slider.setPresetTransformer(SliderLayout.Transformer.Default)
-//        slider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom)
-//        slider.setCustomIndicator(custom_indicator)
-//        slider.setCustomAnimation(DescriptionAnimation())
-        //slider.setDuration(4000)
-        //slider.addOnPageChangeListener(this)
     }
+
+
+
 
     override fun onResume() {
         super.onResume()
@@ -99,5 +116,7 @@ class HomeFragment : Fragment(), HomeContract.View, BaseSliderView.OnSliderClick
 
     override fun onPageSelected(position: Int) {
     }
+
+
 
 }

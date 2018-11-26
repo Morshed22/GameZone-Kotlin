@@ -36,9 +36,9 @@
         android:id="@+id/categoyCardView"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        app:cardCornerRadius="4dp"
         android:layout_margin="@dimen/padding_half"
         android:background="@drawable/gradient_horizontal_view"
+        app:cardCornerRadius="4dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline_center">
@@ -51,21 +51,60 @@
             android:background="@drawable/gradient_horizontal_view">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:contentDescription="@string/game_icon_image"
+                android:id="@+id/gameIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:scaleType="center"
-                android:src="@drawable/coin_small_icon"
-                android:layout_marginLeft="@dimen/padding_half"
                 android:layout_marginStart="@dimen/padding_half"
-                 />
+                android:layout_marginLeft="@dimen/padding_half"
+                android:contentDescription="@string/game_icon_image"
+                android:scaleType="center"
+                android:src="@drawable/coin_small_icon" />
 
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/padding_large"
+                android:layout_marginLeft="@dimen/padding_large"
+                android:layout_toStartOf="@+id/imageButton"
+                android:layout_toLeftOf="@+id/imageButton"
+                android:layout_toEndOf="@+id/gameIcon"
+                android:layout_toRightOf="@+id/gameIcon"
+                android:gravity="center_vertical"
+                tools:text="All Games" />
 
-
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/imageDesciption"
+                android:onClick="onClickSignInButton"
+                android:src="@android:drawable/ic_input_add" />
 
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/itemRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/padding_half"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoyCardView" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
