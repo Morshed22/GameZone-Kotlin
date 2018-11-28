@@ -17,7 +17,7 @@ class HomePresenter(val repository: RemoteRepository,val view:HomeContract.View)
 
        val userdata = UserSharePrefsRepository.getUserData()
         userdata?.let { userdata ->
-            view.progressBarVisible()
+
             repository.retrieveAllGamesItems(userdata.userId, object :Callback<Game>{
 
 

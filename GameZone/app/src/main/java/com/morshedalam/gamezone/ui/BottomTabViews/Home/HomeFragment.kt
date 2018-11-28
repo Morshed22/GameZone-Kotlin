@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), HomeContract.View, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
-
+    private var rootView: View? = null
 
     override lateinit var presenter: HomeContract.Presenter
     private lateinit var adapter: GameItemAdapter
@@ -30,23 +30,33 @@ class HomeFragment : Fragment(), HomeContract.View, BaseSliderView.OnSliderClick
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         presenter = HomePresenter(RemoteRepository(), this)
-        //presenter.start()
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
 
+        if (rootView == null) {
+
+            rootView = inflater.inflate(R.layout.fragment_home, container, false)
+
+            // Initialise your layout here
+
+        }
+
+        return rootView;
+
+
+
+
+    }
 
     override fun onStart() {
         super.onStart()
         presenter.start()
     }
-
 
 
     override fun showHomesData(items: List<Game.Data>) {
